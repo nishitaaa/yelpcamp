@@ -25,6 +25,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB();
+app.locals.moment = require('moment');
 
 // PASSPORT CONFIGUATION
 app.use(require("express-session")({
