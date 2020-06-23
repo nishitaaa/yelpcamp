@@ -9,3 +9,7 @@
 .delete-form {
     display: inline;
 }
+
+#search-button:focus {
+    outline: none;
+}
