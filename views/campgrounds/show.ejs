@@ -28,11 +28,12 @@
                         <p>
                             <%=campground.description%>
                         </p>
-                        <hr>
                         <p>
                             Location:
                             <%=campground.location%>
                         </p>
+                        <hr>
+
                         <p>
                             <em>Submitted by: <a href="/users/<%=campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em>
                         </p>
