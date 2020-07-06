@@ -1,7 +1,6 @@
 <%- include("../partials/header") %>
     <div class="container">
-        <h5><a href="/campgrounds"><i class="fa fa-chevron-left"></i> Back</a></h5>
-
+        <h5><a href="/campgrounds" class="btn btn-primary btn-sm" style="border-radius: 10%;"><i class="fa fa-chevron-left"></i> Back </a></h5>
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">
@@ -83,7 +82,6 @@
                                         <input type="submit" class="btn btn-xs btn-danger" value="Delete">
                                     </form>
                                     <% } %>
-
                             </div>
                         </div>
                         <% }); %>
@@ -123,6 +121,7 @@
                         </div>
                     </div>
                     <!--Collapse Add a comment form END-->
+
                     <hr>
 
                     <!--Check if there are comments, if there are none say no comments.-->
@@ -136,15 +135,15 @@
                                     <div class="col-md-12">
                                         <strong>
                                             <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
-                                        <!--If the current user owns the comment, change the color of the user icon-->
-                                        <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                                <!--If the current user owns the comment, change the color of the user icon-->
+                                                <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                             <% } else { %>
-                                        <!--Else just display it black-->
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                                <!--Else just display it black-->
+                                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                             <% } %>
-                                        <!--Print out the author username-->
-                                            <%= comment.author.username %>
-                                    </strong>
+                                                <!--Print out the author username-->
+                                                <%= comment.author.username %>
+                                        </strong>
 
                                         <!--Show when the comment was made-->
                                         <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
@@ -188,7 +187,6 @@
                                 <% }) %>
                 </div>
                 <!--COMMENT SECTION END-->
-
             </div>
         </div>
     </div>
@@ -265,7 +263,5 @@
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7884nFSB_66oI7gk8eDhYz89_gA0VcI&callback=initMap"></script>
-
-
 
     <%- include("../partials/footer") %>
