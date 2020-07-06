@@ -25,6 +25,18 @@
                                 <%=campground.name %>
                             </a>
                         </h4>
+                        <p>
+                            <%=campground.description%>
+                        </p>
+                        <hr>
+                        <p>
+                            Location:
+                            <%=campground.location%>
+                        </p>
+                        <p>
+                            <em>Submitted by: <a href="/users/<%=campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em>
+                        </p>
+
                         <div class="pull-right">
                             <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#campgroundLikes">
                                 <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
@@ -49,12 +61,16 @@
                                 </div>
                             </form>
                         </div>
-                        <p>
+                        <!-- <p>
                             <%=campground.description%>
                         </p>
                         <p>
+                            Location:
+                            <%=campground.location%>
+                        </p> -->
+                        <!-- <p>
                             <em>Submitted by: <a href="/users/<%=campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em>
-                        </p>
+                        </p> -->
                         <% if (currentUser && campground.author.id.equals(currentUser.id) || currentUser && currentUser.isAdmin) { %>
                             <a class="btn btn-warning" href="/campgrounds/<%= campground._id%>/edit">Edit</a>
                             <form class="delete-form" action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST">
