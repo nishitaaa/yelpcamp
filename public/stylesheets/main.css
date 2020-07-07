@@ -22,10 +22,18 @@
     }
 }
 
+hr.new1 {
+    border: 0.7px solid #E5E5E5;
+}
+
 
 /* Google Maps */
 
 #map {
     height: 400px;
     width: 100%;
+}
+
+.checked {
+    color: orange;
 }

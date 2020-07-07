@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campground");
+var Review = require("../models/review");
 var middleware = require("../middleware");
 var NodeGeocoder = require('node-geocoder');
 var multer = require('multer');
@@ -162,12 +163,15 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
 //SHOW - Shows more info about one campground
 router.get("/:id", function(req, res) {
     //find the cg with provided ID
-    Campground.findById(req.params.id).populate("comments likes").exec(function(err, foundCampground) {
+    Campground.findById(req.params.id).populate("comments likes").populate({
+        path: "reviews",
+        options: { sort: { createdAt: -1 } }
+    }).exec(function(err, foundCampground) {
         if (err || !foundCampground) {
             req.flash("error", "Campground not found");
             res.redirect("back");
         } else {
-            console.log(foundCampground);
+            // console.log(foundCampground);
             // redner show template w/ that cg
             res.render("campgrounds/show", { campground: foundCampground });
         }
@@ -189,6 +193,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res) 
 
 // UPDATE CAMPGROUND WITH GEOCODER AND IMAGE UPLOAD
 router.put("/:id", middleware.checkCampgroundOwnership, upload.single("image"), function(req, res) {
+    delete req.body.campground.rating;
     Campground.findById(req.params.id, async function(err, campground) {
         if (err) {
             req.flash("error", err.message);
@@ -295,16 +300,45 @@ router.put("/:id", middleware.checkCampgroundOwnership, upload.single("image"), 
 //         }
 //     });
 // });
-//Delete/destroy Campground
-router.delete("/:id", middleware.checkCampgroundOwnership, async(req, res) => {
-    try {
-        let foundCampground = await Campground.findById(req.params.id);
-        await foundCampground.remove();
-        res.redirect("/campgrounds");
-    } catch (error) {
-        console.log(error.message);
-        res.redirect("/campgrounds");
-    }
+
+//Delete/destroy Campground (commented out after adding reviews!!!)
+// router.delete("/:id", middleware.checkCampgroundOwnership, async(req, res) => {
+//     try {
+//         let foundCampground = await Campground.findById(req.params.id);
+//         await foundCampground.remove();
+
+//         res.redirect("/campgrounds");
+//     } catch (error) {
+//         console.log(error.message);
+//         res.redirect("/campgrounds");
+//     }
+// });
+// DESTROY CAMPGROUND ROUTE
+router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res) {
+    Campground.findById(req.params.id, function(err, campground) {
+        if (err) {
+            res.redirect("/campgrounds");
+        } else {
+            // deletes all comments associated with the campground
+            Comment.remove({ "_id": { $in: campground.comments } }, function(err) {
+                if (err) {
+                    console.log(err);
+                    return res.redirect("/campgrounds");
+                }
+                // deletes all reviews associated with the campground
+                Review.remove({ "_id": { $in: campground.reviews } }, function(err) {
+                    if (err) {
+                        console.log(err);
+                        return res.redirect("/campgrounds");
+                    }
+                    //  delete the campground
+                    campground.remove();
+                    req.flash("success", "Campground deleted successfully!");
+                    res.redirect("/campgrounds");
+                });
+            });
+        }
+    });
 });
 
 // Campground Like Route
