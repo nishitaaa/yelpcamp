@@ -1,43 +1,48 @@
 <%- include("./partials/header") %>
-
-    <!-- <h1>Sign Up!</h1>
-
-    <form action="/register" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button>Sign Up</button>
-    </form> -->
-
     <div class="row">
-        <h1 style="text-align: center">Sign Up</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/register" method="post">
+        <div class="col-md-12">
+            <form class="form-register" action="/register" method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+                <p>
+                    <small class="text-muted">Fields marked * are required.</small>
+                </p>
+
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="username">
+                    <label for="">Name*</label>
+                    <input class="form-control" type="text" name="firstName" placeholder="first name" required>
+                    <input class="form-control" type="text" name="lastName" placeholder="last name" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="password">
+                    <label for="inputUsername">Username*</label>
+                    <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="firstName" placeholder="first name">
+                    <label for="inputPassword">Password*</label>
+                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Email*</label>
+                    <input class="form-control" type="email" name="email" placeholder="john@doe.com">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="lastName" placeholder="last name">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="email">
-                </div>
-                <div class="form-group">
+                    <label for="">Avatar</label>
                     <input class="form-control" type="text" name="avatar" placeholder="avatar url">
                 </div>
                 <div class="form-group">
+                    <label for="">Admin code (optional)</label>
                     <input class="form-control" type="text" name="adminCode" placeholder="Admin code">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Sign Up!</button>
                 </div>
             </form>
-            <a href="/campgrounds">Go Back</a>
+
+            <div class="form-register">
+                <a href="/campgrounds">Go Back</a>
+            </div>
+
+
         </div>
     </div>
 

@@ -5,57 +5,46 @@
     <!-- Make site responsive on mobile/tablet -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YelpCamp</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css"> -->
-
-
 </head>
 
 <body>
-    <nav class="navbar navbar-default" style="margin-bottom: 0;">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="/">YelpCamp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds" class="nav-link">Home</a></li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
 
-                <a class="navbar-brand" href="/">YelpCamp</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="<%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li style="padding-top: 8px">
+                <form action="/campgrounds" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search" placeholder="Campground search...">
+                        <!-- <input type="submit" value="Search" class="btn btn-default"> -->
+                        <button id="search-button" class="btn btn-link btn-xs" style="border-radius: 50%;"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </form>
 
-                        <form action="/campgrounds" method="GET" class="form-inline">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="search" placeholder="Campground search...">
-                                <!-- <input type="submit" value="Search" class="btn btn-default"> -->
-                                <button id="search-button" class="btn btn-primary btn-xs" style="border-radius: 50%;"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </div>
-                        </form>
-                    </li>
-                    <% if(!currentUser){ %>
-                        <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
-                        <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
-                        <% } else { %>
-                            <li><a href="/users/<%= currentUser.id%>">Signed In As <%= currentUser.username %></a></li>
-                            <li><a href="/logout">Logout</a></li>
-                            <% } %>
-
-                </ul>
-            </div>
+                <% if(!currentUser){ %>
+                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login" class="nav-link">Login</a></li>
+                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register" class="nav-link">Sign Up</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a href="/users/<%= currentUser.id%>" class="nav-link">Signed In As <%= currentUser.username %></a></li>
+                        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                        <% } %>
+            </ul>
+            <!-- <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
         </div>
     </nav>
-
-
-
 
     <div class="container">
         <% if (error && error.length > 0) { %>
