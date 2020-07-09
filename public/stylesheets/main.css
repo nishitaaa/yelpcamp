@@ -7,6 +7,102 @@ body {
     margin-bottom: 60px;
 }
 
+
+/*-----Search bar----- */
+
+.searchbar {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+    width: 35px;
+    height: 35px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+.searchbar input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 0.9em;
+    border-radius: 20px;
+    padding: 0 18px;
+}
+
+.searchbutton {
+    box-sizing: border-box;
+    padding: 0px;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 0.9em;
+    transition: all 1s;
+}
+
+.searchbar:hover {
+    width: 250px;
+    cursor: pointer;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+.searchbar:hover input {
+    display: block;
+}
+
+.searchbar:hover .searchbutton {
+    background: #07051a;
+    color: white;
+}
+
+
+/*-----Jumbotron----- */
+
+.jumbotron {
+    background: linear-gradient(rgba(70, 70, 70, 0.35), rgba(70, 70, 70, 0.35)), fixed, url(https://images.unsplash.com/photo-1563299796-17596ed6b017?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    margin-bottom: 0px;
+}
+
+.jumbotron {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#mainNavbar {
+    background-color: #222222;
+}
+
+.navbar-brand {
+    font-size: 23px;
+}
+
+
+/*-----Sign In Form-----*/
+
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -39,7 +135,7 @@ body {
 }
 
 
-/* ----------------------------- */
+/* ----- Register Form----- */
 
 .form-register {
     width: 100%;
