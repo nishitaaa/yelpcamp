@@ -104,32 +104,32 @@
                                                             <div>
                                                                 <input type="radio" id="first-rate5" name="review[rating]" value="5" checked />
                                                                 <label for="first-rate5" title="5 stars - Amazing">
-                                                    <%- '<span class="fa fa-star checked"></span>'.repeat(5) %>
-                                                </label>
+                                    <%- '<span class="fa fa-star checked"></span>'.repeat(5) %>
+                                </label>
                                                             </div>
                                                             <div>
                                                                 <input type="radio" id="first-rate4" name="review[rating]" value="4" />
                                                                 <label for="first-rate4" title="4 stars - Very good">
-                                                    <%- '<span class="fa fa-star checked"></span>'.repeat(4) %>
-                                                </label>
+                                    <%- '<span class="fa fa-star checked"></span>'.repeat(4) %>
+                                </label>
                                                             </div>
                                                             <div>
                                                                 <input type="radio" id="first-rate3" name="review[rating]" value="3" />
                                                                 <label for="first-rate3" title="3 stars - Average">
-                                                    <%- '<span class="fa fa-star checked"></span>'.repeat(3) %>
-                                                </label>
+                                    <%- '<span class="fa fa-star checked"></span>'.repeat(3) %>
+                                </label>
                                                             </div>
                                                             <div>
                                                                 <input type="radio" id="first-rate2" name="review[rating]" value="2" />
                                                                 <label for="first-rate2" title="2 stars - Not good">
-                                                    <%- '<span class="fa fa-star checked"></span>'.repeat(2) %>
-                                                </label>
+                                    <%- '<span class="fa fa-star checked"></span>'.repeat(2) %>
+                                </label>
                                                             </div>
                                                             <div>
                                                                 <input type="radio" id="first-rate1" name="review[rating]" value="1" />
                                                                 <label for="first-rate1" title="1 star - Terrible">
-                                                    <%- '<span class="fa fa-star checked"></span>'.repeat(1) %>
-                                                </label>
+                                    <%- '<span class="fa fa-star checked"></span>'.repeat(1) %>
+                                </label>
                                                             </div>
 
                                                         </fieldset>
@@ -171,16 +171,23 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-2">
                                             <div class="card" style="padding:8px;">
-                                                <div class="col-md-3">
-                                                    <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %>
-                                                        <%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
-                                                            <div>Review by: <strong><%= review.author.username %></strong></div>
-                                                            <span><em><%= review.updatedAt.toDateString() %></em></span>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p style="text-align: justify; word-wrap: break-word;">
-                                                        <%= review.text %>
-                                                    </p>
+                                                <div class="card-body p-0">
+
+                                                    <div class="card-title">
+                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %>
+                                                            <%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                                                                <div class="float-right">
+                                                                    <span><em><%= review.updatedAt.toDateString() %></em></span>
+                                                                </div>
+                                                                <div>Review by: <strong><%= review.author.username %></strong></div>
+                                                    </div>
+                                                    <div class="card-text">
+                                                        <p class="m-2" style="text-align: justify; word-wrap: break-word;">
+                                                            <%= review.text %>
+                                                        </p>
+                                                    </div>
+
+
                                                     <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
                                                         <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseReviewEdit<%= review._id %>" aria-expanded="false" aria-controls="collapse<%= review._id %>">Edit</a>
                                                         <form class="delete-form" action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
@@ -198,36 +205,36 @@
                                                                                 <input type="radio" id="first-rate5" name="review[rating]" value="5" <% if (review.rating===5 ) { %> checked
                                                                                 <% } %> />
                                                                                     <label for="first-rate5" title="5 stars - Amazing">
-                                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(5) %>
-                                                                    </label>
+                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(5) %>
+                                                    </label>
                                                                             </div>
                                                                             <div>
                                                                                 <input type="radio" id="first-rate4" name="review[rating]" value="4" <% if (review.rating===4 ) { %> checked
                                                                                 <% } %> />
                                                                                     <label for="first-rate4" title="4 stars - Very good">
-                                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(4) %>
-                                                                    </label>
+                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(4) %>
+                                                    </label>
                                                                             </div>
                                                                             <div>
                                                                                 <input type="radio" id="first-rate3" name="review[rating]" value="3" <% if (review.rating===3 ) { %> checked
                                                                                 <% } %> />
                                                                                     <label for="first-rate3" title="3 stars - Average">
-                                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(3) %>
-                                                                    </label>
+                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(3) %>
+                                                    </label>
                                                                             </div>
                                                                             <div>
                                                                                 <input type="radio" id="first-rate2" name="review[rating]" value="2" <% if (review.rating===2 ) { %> checked
                                                                                 <% } %> />
                                                                                     <label for="first-rate2" title="2 stars - Not good">
-                                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(2) %>
-                                                                    </label>
+                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(2) %>
+                                                    </label>
                                                                             </div>
                                                                             <div>
                                                                                 <input type="radio" id="first-rate1" name="review[rating]" value="1" <% if (review.rating===1 ) { %> checked
                                                                                 <% } %> />
                                                                                     <label for="first-rate1" title="1 star - Terrible">
-                                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(1) %>
-                                                                    </label>
+                                                        <%- '<span class="fa fa-star checked"></span>'.repeat(1) %>
+                                                    </label>
                                                                             </div>
 
                                                                         </fieldset>
@@ -241,15 +248,11 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-
-
-
                                                         <% } %>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <% }); %>
 
                                         <div style="margin-bottom: 10px;">

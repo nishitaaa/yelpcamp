@@ -113,6 +113,10 @@ input[type="search"]::-webkit-search-results-decoration {
     font-size: 23px;
 }
 
+.nav-item {
+    font-size: 16.5px;
+}
+
 
 /*-----Sign In Form-----*/
 

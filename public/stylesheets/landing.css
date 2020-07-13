@@ -13,6 +13,7 @@ body {
 
 #landing-header h1 {
     color: #fff;
+    text-shadow: 0 4px 15px black;
 }
 
 .slideshow {
