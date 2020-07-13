@@ -1,6 +1,12 @@
-html {
+/* html {
     position: relative;
     min-height: 100%;
+} */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -93,7 +99,8 @@ input[type="search"]::-webkit-search-results-decoration {
 /*-----Jumbotron----- */
 
 .jumbotron {
-    background: linear-gradient(rgba(70, 70, 70, 0.35), rgba(70, 70, 70, 0.35)), fixed, url(https://images.unsplash.com/photo-1563299796-17596ed6b017?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9);
+    /* background: linear-gradient(rgba(70, 70, 70, 0.35), rgba(70, 70, 70, 0.35)), fixed, url(https://images.unsplash.com/photo-1563299796-17596ed6b017?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9); */
+    background: linear-gradient(rgba(70, 70, 70, 0.35), rgba(70, 70, 70, 0.35)), fixed, url(https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
