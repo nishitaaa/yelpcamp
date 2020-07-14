@@ -1,42 +1,91 @@
 <%- include("../partials/header") %>
-    <div class="row">
-        <div class="col-md-4">
-            <h1>
-                <%= user.firstName + " " + user.lastName %>
-            </h1>
-            <div class="thumbnail">
-                <% if(user.avatar.length < 1) { %>
-                    <img class="card-img-top" src="https://basinred.com/wp-content/uploads/2016/09/default-user-img.jpg">
-                    <% } else { %>
-                        <img class="card-img-top" src="<%= user.avatar %>">
-                        <% } %>
-                            <!-- <img src="<%=user.avatar%>" alt="user profile image"> -->
-                            <div class="caption">
-                                <a href="mailto:<%= user.email%>">
-                                    <%= user.email %>
-                                </a>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="card shadow-sm my-4" style="width: 18em;">
+                            <div class="card-img-top">
+                                <% if(user.avatar.length < 1) { %>
+                                    <img class="card-img-top" src="https://basinred.com/wp-content/uploads/2016/09/default-user-img.jpg">
+                                    <% } else { %>
+                                        <img class="card-img-top" src="<%= user.avatar %>">
+                                        <% } %>
                             </div>
-            </div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corporis maiores accusantium repellat esse commodi cupiditate velit odit incidunt quisquam vitae rem, expedita nostrum earum accusamus consequuntur culpa minus adipisci.
-        </div>
-        <div class="col-md-8">
-            <h3>
-                <%= user.username %>'s campgrounds: </h3>
-            <ul>
-                <% campgrounds.forEach(function(campground){ %>
-                    <li>
-                        <div class="thumbnail">
-                            <h4>
-                                <a href="/campgrounds/<%=campground.id%>">
-                                    <%= campground.name %>
-                                </a>
-                            </h4>
-                            <img src="<%= campground.image %>">
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <%= user.firstName + " " + user.lastName %>
+                                </h3>
+                                <h6 class="card-subtitle text-muted">
+                                    <% if (campgrounds.length === 1) { %>
+                                        <%= campgrounds.length %> Campground
+                                            <% } else { %>
+                                                <%= campgrounds.length %> Campgrounds
+                                                    <% } %>
+
+                                </h6>
+                                <p>
+                                    <p class="card-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corporis maiores accusantium repellat esse commodi cupiditate.
+                                    </p>
+                                </p>
+                            </div>
                         </div>
 
-                    </li>
-                    <% }) %>
-            </ul>
+                        <div class="card shadow-sm" style="width: 18rem;">
+                            <div class="card-header">
+                                <%= user.firstName %>'s Profile
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-envelope"></i> <strong>Email: </strong>
+                                    <a href="mailto:<%= user.email %> ">
+                                        <%= user.email %>
+                                    </a>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <i class="far fa-calendar-alt"></i> <strong>Joined: </strong><span class="text-muted"><%= moment(user.joined).format('LL') %> </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="container text-center mt-3">
+                            <% if (campgrounds.length === 0) { %>
+                                <h1>No Campgrounds yet <i class="far fa-sad-cry"></i></h1>
+                                <% } else { %>
+                                    <h1>Campgrounds </h1>
+                                    <% } %>
+                        </div>
+
+                        <div class="row">
+                            <% campgrounds.forEach(function(campground) { %>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card shadow-sm mt-3">
+
+                                        <a href="/campgrounds/<%= campground._id %>"><img id="campgroundCard" class="card-img-top" src="<%= campground.image %>"></a>
+                                        <div class="card-title text-center my-2">
+                                            <h4>
+                                                <%= campground.name %>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
     <%- include("../partials/footer") %>

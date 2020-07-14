@@ -227,6 +227,14 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 }
 
+@media (min-width: 768px) {
+    #campgroundCard {
+        object-fit: cover;
+        height: 250px;
+        width: 100%;
+    }
+}
+
 
 /* hr.new1 {
     border: 0.7px solid #E5E5E5;

@@ -179,7 +179,7 @@
                                                                 <div class="float-right">
                                                                     <span><em><%= review.updatedAt.toDateString() %></em></span>
                                                                 </div>
-                                                                <div>Review by: <strong><%= review.author.username %></strong></div>
+                                                                <div>Review by: <strong><a href="/users/<%=review.author.id %>" style="color: black"><%= review.author.username %></a></strong></div>
                                                     </div>
                                                     <div class="card-text">
                                                         <p class="m-2" style="text-align: justify; word-wrap: break-word;">
@@ -333,7 +333,7 @@
                                                             <span><i class="fas fa-user"></i> </span>
                                                         <% } %>
                                                             <!--Print out the author username-->
-                                                            <%= comment.author.username %> 
+                                                            <a href="/users/<%=comment.author.id %>" style="color: black"><%= comment.author.username %> </a>
                                                         </strong>
 
                                                         <!--Printing the comment-->
